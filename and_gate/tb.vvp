@@ -1,0 +1,57 @@
+#! /usr/bin/vvp
+:ivl_version "12.0 (stable)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/system.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_sys.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/vhdl_textio.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/v2005_math.vpi";
+:vpi_module "/usr/lib/x86_64-linux-gnu/ivl/va_math.vpi";
+S_0x6543a3c57b90 .scope module, "testbench" "testbench" 2 1;
+ .timescale 0 0;
+v0x6543a3c7dc40_0 .var "A", 0 0;
+v0x6543a3c7dd10_0 .var "B", 0 0;
+v0x6543a3c7dde0_0 .net "Y", 0 0, L_0x6543a3c7dee0;  1 drivers
+S_0x6543a3c6b240 .scope module, "uut" "and_gate" 2 4, 3 1 0, S_0x6543a3c57b90;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "A";
+    .port_info 1 /INPUT 1 "B";
+    .port_info 2 /OUTPUT 1 "Y";
+L_0x6543a3c7dee0 .functor AND 1, v0x6543a3c7dc40_0, v0x6543a3c7dd10_0, C4<1>, C4<1>;
+v0x6543a3c6b470_0 .net "A", 0 0, v0x6543a3c7dc40_0;  1 drivers
+v0x6543a3c7da60_0 .net "B", 0 0, v0x6543a3c7dd10_0;  1 drivers
+v0x6543a3c7db20_0 .net "Y", 0 0, L_0x6543a3c7dee0;  alias, 1 drivers
+    .scope S_0x6543a3c57b90;
+T_0 ;
+    %vpi_call 2 11 "$dumpfile", "and_gate.vcd" {0 0 0};
+    %vpi_call 2 12 "$dumpvars", 32'sb00000000000000000000000000000000, S_0x6543a3c57b90 {0 0 0};
+    %vpi_call 2 13 "$monitor", "At time %t: A=%b B=%b => Y=%b", $time, v0x6543a3c7dc40_0, v0x6543a3c7dd10_0, v0x6543a3c7dde0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x6543a3c7dc40_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x6543a3c7dd10_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x6543a3c7dc40_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x6543a3c7dd10_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x6543a3c7dc40_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v0x6543a3c7dd10_0, 0, 1;
+    %delay 10, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x6543a3c7dc40_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v0x6543a3c7dd10_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 21 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb.v";
+    "design.v";
